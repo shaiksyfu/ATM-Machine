@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class AtmMachine {
-
     private double balance;
     private Scanner scanner;
 
@@ -42,10 +41,6 @@ public class AtmMachine {
                     System.out.println("Invalid choice. Please try again.");
             }
         } while (choice != 4);
-    }
-
-    public double getBalance() {
-        return balance;
     }
 
     public void checkBalance() {
@@ -95,5 +90,7 @@ public class AtmMachine {
     public static void main(String[] args) {
         AtmMachine atm = new AtmMachine(1000);
         atm.performTransaction();
+        // Close scanner to prevent resource leak
+        atm.scanner.close();
     }
 }
